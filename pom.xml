@@ -8,7 +8,7 @@
 	</parent>
 	<artifactId>job-dsl-promotions</artifactId>
 	<name>DSL Extension for the Promoted Builds Plugin for Jenkins</name>	
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.RC4.SherWeb</version>
 	<packaging>hpi</packaging>
 	<url>http://wiki.jenkins-ci.org/display/JENKINS/Promoted+Builds+Plugin/</url>
 	<dependencies>

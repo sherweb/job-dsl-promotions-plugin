@@ -2,7 +2,10 @@ package org.jenkinsci.plugins.jobdsl.promotions
 
 import javaposse.jobdsl.dsl.Context
 import javaposse.jobdsl.dsl.ContextHelper
+import javaposse.jobdsl.dsl.FileJobManagement;
 import javaposse.jobdsl.dsl.helpers.BuildParametersContext
+
+import org.apache.commons.io.FileUtils;
 
 class ConditionsContext implements Context {
 
@@ -61,7 +64,7 @@ class ConditionsContext implements Context {
 
     def parameters(Closure parametersClosure) {
         // delegate to main BuildParametersContext
-        BuildParametersContext parametersContext = new BuildParametersContext()
+        BuildParametersContext parametersContext = new BuildParametersContext(new FileJobManagement(FileUtils.getTempDirectory()))
         ContextHelper.executeInContext(parametersClosure, parametersContext)
         parametersContext.buildParameterNodes.values().each { params << it }
     }
