@@ -64,7 +64,10 @@ class ConditionsContext implements Context {
 
     def parameters(Closure parametersClosure) {
         // delegate to main BuildParametersContext
-        BuildParametersContext parametersContext = new BuildParametersContext(new FileJobManagement(FileUtils.getTempDirectory()))
+		
+		// TODO : Since Job-dsl 1.43+ we are supposed to pass a JobManagement and an Item to the constructor ... where can we get those?
+		
+        BuildParametersContext parametersContext = new BuildParametersContext(new FileJobManagement(FileUtils.getTempDirectory()), this)
         ContextHelper.executeInContext(parametersClosure, parametersContext)
         parametersContext.buildParameterNodes.values().each { params << it }
     }
